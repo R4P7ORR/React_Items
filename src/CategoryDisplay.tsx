@@ -5,9 +5,7 @@ interface CategoryDisplayProps {
 
 function CategoryDisplay(props: CategoryDisplayProps) {
     return (
-        <li>
-            <button onClick={props.handleClick}>{props.name}</button>
-        </li>
+        <button onClick={props.handleClick}>{props.name}</button>
     )
 
 }

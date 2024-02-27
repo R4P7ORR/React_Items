@@ -85,7 +85,6 @@ const App: React.FC = () => {
 
         <div className="mainDiv">
             <button onClick={ShowCreateItem}>New Item</button>
-
             {items.map((item: Item) => <ItemDisplay name={item.name} handleClick={() => {DeleteItem(item)}}/>)}
         </div>
     </div>

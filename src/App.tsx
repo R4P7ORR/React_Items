@@ -18,7 +18,7 @@ const App: React.FC = () => {
     const [searchText, setSearchText] = useState<string>('');
     const [uniqueCategories, setUniqueCategories] = useState<string[]>(GetUniqueCategories);
 
-    const [nextId, setNextId] = useState(initialItemList.length)
+    const [nextId, setNextId] = useState(initialItemList.length +1)
 
     let popUpToggle = false;
 
@@ -49,11 +49,17 @@ const App: React.FC = () => {
     }
 
     function DeleteItem(item: Item){
+        // Synchronously update items state
         setItems(prevItems => prevItems.filter(i => i !== item));
-        if (items.filter(i =>i.category === item.category).length === 1){
+        // Synchronously update filteredItems state
+        setFilteredItems(prevFilteredItems => prevFilteredItems.filter(i => i !== item));
+
+        // Also update uniqueCategories if necessary
+        if (items.filter(i => i.category === item.category).length === 1){
             setUniqueCategories(prevCategories => prevCategories.filter(i => i !== item.category));
         }
     }
+
 
     function ShowCreateItem(){
         const popUp = document.getElementById("popUpDiv") as HTMLElement;
